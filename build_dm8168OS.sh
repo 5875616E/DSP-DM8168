@@ -54,6 +54,8 @@ make CROSS_COMPILE=arm-none-linux-gnueabi- ARCH=arm ti8168_evm_defconfig
 make CROSS_COMPILE=arm-none-linux-gnueabi- ARCH=arm uImage
 cp arch/arm/boot/uImage ../host-tools
 
+#if failed kernel/timeconst.pl line 373 => change !define(@val) => !@val
+
 #setup filesystem
 cd ~/
 ti-ezsdk_dm816x-evm_5_05_02_00/setup.sh
@@ -65,6 +67,12 @@ cd /home/l/ti-ezsdk_dm816x-evm_5_05_02_00/board-support/host-tools
 gedit mksd-ti816x.sh
 #Copy path sfdisk
 #edit mksd-ti816x.sh path sfdisk
+
+#Build all apps and compo
+cd /home/l/ti-ezsdk_dm816x-evm_5_05_02_00
+#change content in the makefile: remove matrix psp-examples
+make all
+sudo make install
 
 
 sudo ./mksd-ti816x.sh /dev/sdb MLO u-boot.bin uImage nfs.tar.gz

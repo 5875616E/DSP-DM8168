@@ -2,14 +2,27 @@
 #date: 01/Aug/18
 
 #prepared file: CodeSourcery and ti-ezsdk-dm8168
- 
+
+#############################################################################
+#	Fix bugs not found python 3.6 when sfdisk installed
+#############################################################################
+sudo add-apt-repository ppa:jonathonf/python-3.6  # (only for 16.04 LTS)
+sudo apt update
+sudo apt install python3.6
+sudo apt install python3.6-dev
+sudo apt install python3.6-venv
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3.6 get-pip.py
+sudo ln -s /usr/bin/python3.6 /usr/local/bin/python3
+sudo ln -s /usr/local/bin/pip /usr/local/bin/pip3
+
 #############################################################################
 #	Fix bugs downgrade sfdisk 2.25
 #############################################################################
 wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/util-linux/2.25.2-4ubuntu3/util-linux_2.25.2.orig.tar.xz
 
 tar xvf util-linux_2.25.2.orig.tar.xz
-cd util-linux_2.25.2
+cd util-linux_2.25.2/
 ./autogen.sh
 ./configure
 make

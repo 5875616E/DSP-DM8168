@@ -14,6 +14,10 @@ cd util-linux_2.25.2
 ./configure
 make
 pwd
+#############################################################################
+#java.lang.UnsatisfiedLinkError: /tmp/install.dir.8756/Linux/resource/jre/lib/i386/xawt/libmawt.so: libXext.so.6
+#############################################################################
+sudo apt-get install libxrender1:i386 libxtst6:i386 libxi6:i386
 
 #############################################################################
 #	Build bootloader, kernel, filesystem DM8168
